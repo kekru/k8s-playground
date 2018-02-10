@@ -1,32 +1,32 @@
 apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: nginx-pr123-deployment
+  name: whoami-deployment
   labels:
-    app: nginx
+    app: whoami-pr987
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: whoami-pr987
   template:
     metadata:
       labels:
-        app: nginx
+        app: whoami-pr987
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.7.9
+      - name: whoami
+        image: emilevauge/whoami
         ports:
         - containerPort: 80
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-pr123-public
+  name: whoami-pr987-public
 spec:
   selector:
-    app: nginx
+    app: whoami-pr987
   ports:
   - protocol: TCP
     port: 80
