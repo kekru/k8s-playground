@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
       - name: genexposer
-        image: whiledo/genexposer-test@sha256:627217a1bad083a795ccd2fe306b10edd00ba6270749261b6897ef157ced0fa5
+        image: whiledo/genexposer-test@sha256:56086dd94f8114a10b09a8383f037382e089cf4b1def5ebb58ccc05b55a07d4b
+        env:
+        - name: BASE_URL
+          value: app.192.168.0.19.nip.io
         ports:
         - containerPort: 80
 ---

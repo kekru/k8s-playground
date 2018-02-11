@@ -8,21 +8,21 @@ metadata:
     #ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "jenkins.127.0.0.1.nip.io"
+  - host: "jenkins.192.168.0.19.nip.io"
     http:
       paths:
       - path: /
         backend:
           serviceName: jenkins-service
           servicePort: 80
-  - host: "gitea.127.0.0.1.nip.io"
+  - host: "gitea.192.168.0.19.nip.io"
     http:
       paths:
       - path: /
         backend:
           serviceName: gitea
           servicePort: 80
-  - host: "*.app.127.0.0.1.nip.io"
+  - host: "*.app.192.168.0.19.nip.io"
     http:
       paths:
       - path: /
