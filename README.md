@@ -15,6 +15,29 @@ docker build -t apache2 ./border-apache/
 docker run --rm -i --net=host apache2 #with -t apache will not start
 ```
 
+## run in kubernetes in docker
+```bash
+# once
+go get -u sigs.k8s.io/kind
+kind create cluster
+
+# for each new terminal
+export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
+
+# run kubectl commands
+kubectl cluster-info
+
+# expose ports
+kubectl port-forward service/my-service 8080:80 --address 0.0.0.0 # available under localhost:8080
+```
+
+## traefik ingresscontroller
+```bash
+kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-rbac.yaml  
+kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-deployment.yaml  
+kubectl --namespace kube-system port-forward service/traefik-ingress-service 8080:80 --address 0.0.0.0
+```
+
 ## keycloak
 ```bash
 docker run -d --name keycloak -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -p 9876:8080 jboss/keycloak
