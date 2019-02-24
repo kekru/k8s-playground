@@ -63,3 +63,12 @@ Copy `Credentials -> Secret` in Border Apache's `OIDCClientSecret` field (httpd.
   http://blog.keycloak.org/2016/10/registering-new-clients-from-shell.html 
 + jwt viewer  
   https://jwt.io/  
+
+
+## socat
+proxy and and print tcp
+`socat -v -d -d TCP-LISTEN:9999,fork TCP:localhost:443`
+
+## TCP,SNI links:
++ http://nginx.org/en/docs/stream/ngx_stream_ssl_preread_module.html
++ http://mailman.nginx.org/pipermail/nginx/2017-September/054700.html
